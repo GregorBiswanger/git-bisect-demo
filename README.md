@@ -1,27 +1,23 @@
-# GitBisectDemo
+# Git Bisect Demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
+Dies ist eine Demo zur Verwendung von git bisect, um einen Fehler in einem Projekt zu finden. Es handelt sich hierbei um eine Angular App, die in der Mitte vom Bildschirm eine Animation ausführen soll. In der aktuellen Version, funktioniert es nicht mehr. Finde den Fehler und behebe ihn!
 
-## Development server
+## Schritt-für-Schritt-Anleitung für Git Bisect
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Clone das Repository auf den Computer.
 
-## Code scaffolding
+2. Starte den Git Bisect-Prozess mit dem Befehl `git bisect start`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Markiere einen Commit, bei dem das Problem noch nicht vorhanden war, mit `git bisect good [commit-hash]`.
 
-## Build
+4. Markiere einen Commit, bei dem das Problem bereits vorhanden war, mit `git bisect bad [commit-hash]`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+5. Git wird automatisch zu einem Commit in der Mitte beider Commits gebracht. Überprüfe das Verhalten der Anwendung und markiere es als "good" oder "bad" mit `git bisect good` oder `git bisect bad`.
 
-## Running unit tests
+6. Git wird zu einem neuen Commit gebracht und wiederholt den Prozess, bis es den Commit gefunden hat, bei dem das Problem begonnen hat.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+7. Sobald Git den Commit gefunden hat, beende den Bisect-Prozess mit `git bisect reset`.
 
-## Running end-to-end tests
+8. Überprüfe den Commit, um den Ursprung des Fehlers zu identifizieren und behebe ihn.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Das war's! Mit Git Bisect kann man den Ursprung eines Fehlers im Code schnell und effizient finden, indem man den Code automatisch bis zum fehlerhaften Commit durchsucht. Überprüfe jeden Commit gründlich, um sicherzustellen, dass das Problem tatsächlich gefunden wurde.
